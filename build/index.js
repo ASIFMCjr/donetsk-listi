@@ -1,0 +1,1 @@
+async function s(o){const e=new URL(o.url);if(e.pathname===""||e.pathname==="/")return new Response(Bun.file("index.html"));return new Response("Not Found",{status:404})}var n=Bun.serve({hostname:"0.0.0.0",port:3000,fetch:s});console.log(`Bun Todo running on ${n.hostname}:${n.port}`);
