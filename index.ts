@@ -2,7 +2,8 @@ const fetchHandler = async (request: Request): Promise<Response> => {
   const url = new URL(request.url);
   const indexRoutes = ['/','/catalog','/about','/contacts'];
   if (url.pathname === "/catalog.pdf") return new Response(Bun.file("catalog.pdf"));
-  if (indexRoutes.includes(url.pathname)) return new Response(Bun.file("index.html"));;
+  if (url.pathname.includes("/assets/")) return new Response(Bun.file("." + url.pathname))
+  if (indexRoutes.includes(url.pathname)) return new Response(Bun.file("index.html"));
   return new Response("404!");
 }
 
